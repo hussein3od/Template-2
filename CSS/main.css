@@ -1,0 +1,83 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+}
+.list {
+    font-family: Arial, Helvetica, sans-serif;
+    width: 200px;
+    height: 100vh;
+    overflow: scroll;
+    position: fixed;
+    text-decoration: none;
+    margin: 0;
+    padding: 5px;
+    border-right: 1px solid #333333b8;
+    display: inline-block;
+    top: 0
+}
+.list::-webkit-scrollbar {
+    width: 0;
+}
+.list li {
+    position: relative;
+    list-style: none;
+    padding: 12px;
+    padding-left: 4px;
+    border-bottom: 1px solid #3333334d;
+    cursor: pointer;
+    transition: 0.5s;
+}
+.list li::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: #efecec;
+    border-bottom: 1px solid black;
+    z-index: -1;
+    transition: 0.5s;
+}
+.list li:hover {
+    padding-left: 17px;
+}
+.list li:hover::before {
+    width: 100%;
+}
+.list li.active{
+    background-color: #efecec;
+    border-bottom: 1px solid black;
+}
+.meal-name {
+    display: block;
+    font-size: 18px;
+    margin-left: 5px
+}
+.box{
+    background-color: rgb(249, 249, 249);
+    background-size: cover;
+    height: 360px;
+    overflow: hidden;
+}
+.box img{
+    width: 100%;
+    height: 309px;
+}
+.parent {
+    float: right;
+    width: calc(100% - 215px);
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(315px, 1fr));
+    margin-top: 35px
+}
+input{
+    padding: 1px;
+    font-size: 18px;
+    border-radius: 8px;
+    position: absolute;
+    right: 5px;
+}
+.listo {
+    float: right;
+}

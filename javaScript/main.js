@@ -75,3 +75,27 @@ const activeClass = (lis) => {
     })
     });
 }
+
+let searchInput = document.querySelector(".search");
+
+const search = async () => {
+    parent.innerHTML = "";
+    searchValue = searchInput.value
+    let data = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${searchValue}`)
+    data = await data.json();
+    for(let m = 0; m < data.meals.length; m++){
+        let mealName = document.createElement("h2")
+        let img = document.createElement("img");
+        let box = document.createElement("div")
+        box.classList.add("box")
+        mealName.classList.add("meal-name")
+        mealName.innerHTML = data.meals[m].strMeal
+        img.src = data.meals[m].strMealThumb
+        box.appendChild(mealName)
+        box.appendChild(img)
+        parent.appendChild(box);
+    }
+}
+searchInput.onkeyup = function () {
+    search()
+}

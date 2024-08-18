@@ -71,13 +71,17 @@ body{
     grid-template-columns: repeat(auto-fill, minmax(315px, 1fr));
     margin-top: 35px
 }
-input{
+form{
     padding: 1px;
     font-size: 18px;
     border-radius: 8px;
     position: absolute;
     right: 5px;
 }
-.listo {
-    float: right;
+form input{
+    font-size: 21px;
+    display: inline;
+    padding: 2px;
+    border: 1px solid black;
+    height: 100%
 }

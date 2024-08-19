@@ -18,30 +18,26 @@ const getGategores = async () => {
     activeClass(text)
 }
 
-const getRespes = (str) => {
+const getRespes = async (str) => {
     parent.innerHTML = ""
     document.querySelector(".loading").style.display = "block"
-        fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${str}`)
-            .then((result) => {
-                return result.json();
-            }).then((d) => {
-                document.querySelector(".loading").style.display = "none"
-                parent.innerHTML = ""
-                for(let m = 0; m < d.meals.length; m++) {
-                    let mealName = document.createElement("h2")
-                    let img = document.createElement("img");
-                    let box = document.createElement("div")
-                    box.classList.add("box")
-                    mealName.classList.add("meal-name")
-                    mealName.innerHTML = d.meals[m].strMeal
-                    img.src = d.meals[m].strMealThumb
-                    box.appendChild(mealName)
-                    box.appendChild(img)
-                    parent.appendChild(box)
-                }
-            })
+    let data = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${str}`)
+        data = await data.json();
+        document.querySelector(".loading").style.display = "none"
+        parent.innerHTML = ""
+        for(let m = 0; m < data.meals.length; m++){
+            let mealName = document.createElement("h2")
+            let img = document.createElement("img");
+            let box = document.createElement("div")
+            box.classList.add("box")
+            mealName.classList.add("meal-name")
+            mealName.innerHTML = data.meals[m].strMeal
+            img.src = data.meals[m].strMealThumb
+            box.appendChild(mealName)
+            box.appendChild(img)
+            parent.appendChild(box);
         }
-        
+}
 getGategores()
 
 const all = async () => {
@@ -61,11 +57,16 @@ const all = async () => {
         box.appendChild(mealName)
         box.appendChild(img)
         parent.appendChild(box);
+        const url = "http://127.0.0.1:5501/HTML/info.html?";
+        const obj = {
+            id: data.meals[m].idMeal
+        };
+        const searchParams = new URLSearchParams(obj).toString();
+        box.onclick = function () {
+            window.location.href = url + searchParams
+        }
     }
 }
-
-
-
 document.querySelector(".all").onclick = function () {
     parent.innerHTML = ""
     all()

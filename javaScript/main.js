@@ -2,8 +2,10 @@ const parent = document.querySelector(".parent")
 let list = document.querySelector(".list")
 list.classList.add("class")
 const getGategores = async () => {
+    document.querySelector(".loading").style.display = "block"
     let data = await fetch("https://www.themealdb.com/api/json/v1/1/categories.php")
     data = await data.json();
+    document.querySelector(".loading").style.display = "none"
     for(let i = 0; i < data.categories.length; i++) {
         let li = document.createElement("li");
         li.innerHTML = data.categories[i].strCategory;
@@ -17,11 +19,13 @@ const getGategores = async () => {
 }
 
 const getRespes = (str) => {
+    parent.innerHTML = ""
+    document.querySelector(".loading").style.display = "block"
         fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${str}`)
             .then((result) => {
                 return result.json();
             }).then((d) => {
-                console.log(d)
+                document.querySelector(".loading").style.display = "none"
                 parent.innerHTML = ""
                 for(let m = 0; m < d.meals.length; m++) {
                     let mealName = document.createElement("h2")
@@ -41,8 +45,11 @@ const getRespes = (str) => {
 getGategores()
 
 const all = async () => {
+    parent.innerHTML = ""
+    document.querySelector(".loading").style.display = "block"
     let data = await fetch("https://www.themealdb.com/api/json/v1/1/search.php?s")
     data = await data.json();
+    document.querySelector(".loading").style.display = "none"
     for(let m = 0; m < data.meals.length; m++){
         let mealName = document.createElement("h2")
         let img = document.createElement("img");
@@ -81,8 +88,10 @@ let searchInput = document.querySelector(".search");
 const search = async () => {
     parent.innerHTML = "";
     searchValue = searchInput.value
+    document.querySelector(".loading").style.display = "block"
     let data = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${searchValue}`)
     data = await data.json();
+    document.querySelector(".loading").style.display = "none";
     for(let m = 0; m < data.meals.length; m++){
         let mealName = document.createElement("h2")
         let img = document.createElement("img");

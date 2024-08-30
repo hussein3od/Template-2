@@ -57,7 +57,7 @@ const getRespes = async (type, str) => {
         };
         const searchParams = new URLSearchParams(obj).toString();
         box.onclick = function () {
-            window.location.href = window.location.origin + "/HTML/info.html?" + searchParams
+            window.location.href = window.location.origin + "/Template-2/HTML/info.html?" + searchParams
         }
     }
 }

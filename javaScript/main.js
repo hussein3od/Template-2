@@ -1,6 +1,5 @@
 const parent = document.querySelector(".parent")
 let list = document.querySelector(".list")
-let country = null
 list.classList.add("class")
 const getGategores = async () => {
     document.querySelector(".loading").style.display = "block"
@@ -19,17 +18,15 @@ const getGategores = async () => {
     activeClass(text)
 }
 
-const flags = async () => {
-    let data = await fetch("https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/index.json")
-    country = await data.json()
-}
-const func = async () => {
-    await flags()
-    
-    getRespes("search", searchInput.value)
-}
+let toggleBtn = document.querySelector(".icon");
 
-func()
+toggleBtn.onclick = function (e) {
+    e.stopPropagation();
+    list.classList.toggle("open")
+}
+document.addEventListener("click", (e) => {
+    list.classList.remove("open")
+})
 
 let searchInput = document.querySelector(".search");
 
@@ -52,14 +49,6 @@ const getRespes = async (type, str) => {
         mealName.classList.add("meal-name");
         mealName.innerHTML = data.meals[m].strMeal;
         img.src = data.meals[m].strMealThumb;
-        for(let i = 0; i < country.length; i++){
-            if(country[i].name === data.meals[m].strArea){
-                console.log("gjff");
-            }else{
-                console.log("ffef");
-                break;
-            }
-        }
         box.appendChild(img)
         box.appendChild(mealName);
         parent.appendChild(box);
@@ -78,6 +67,7 @@ document.querySelector(".all").onclick = function () {
     parent.innerHTML = ""
     getRespes("search", searchInput.value)
 }
+getRespes("search", searchInput.value)
 
 const activeClass = (lis) => {
     lis.forEach(li => {

@@ -39,7 +39,8 @@ body{
     left: 0;
     background: white;
     margin-top: 60px;
-    border-radius: 0 21px 0 0
+    border-radius: 0 21px 0 0;
+    transition: 0.6s;
 }
 .list::-webkit-scrollbar {
     width: 0;
@@ -158,13 +159,13 @@ form i{
 }
 @media (max-width: 768px) {
     .list{
-        display: none;
+        margin-left: -211px;
     }
     .parent{
         width: 100%
     }
     .open{
-        display: block;
+        margin-left: 0;
     }
     .icon{
         display: block;

@@ -67,6 +67,7 @@ document.querySelector(".all").onclick = function () {
     parent.innerHTML = ""
     getRespes("search", searchInput.value)
 }
+
 getRespes("search", searchInput.value)
 
 const activeClass = (lis) => {

@@ -28,5 +28,5 @@ getImages()
 let button = document.querySelector(".description button")
 
 button.onclick = function() {
-    window.location.href = origin + "/HTML/main.html"
+    window.location.href = window.location.origin + "/Template-2/HTML/main.html"
 }

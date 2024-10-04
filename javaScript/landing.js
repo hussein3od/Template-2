@@ -1,5 +1,9 @@
+let grid = document.querySelector(".grid")
+let title = document.querySelector(".grid .description .title")
 const getImages = async () => {
+    title.style.color = "black"
     let data = await fetch("https://www.themealdb.com/api/json/v1/1/categories.php")
+    title.style.color = "var(--main-color)"
     data = await data.json();
     let parent = document.createElement("div")
     let circle = document.createElement("div")
@@ -16,8 +20,8 @@ const getImages = async () => {
     }
     let border = document.createElement("div")
     border.classList.add("border")
-    parent.appendChild(border)
-    document.body.appendChild(parent)
+    circle.appendChild(border)
+    grid.appendChild(parent)
 }
 getImages()
 

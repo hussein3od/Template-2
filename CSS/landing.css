@@ -29,7 +29,7 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr;
     width: 100%;
-    margin-top: -85px;
+    margin-top: -95px;
 }
 .circle-container{
     position: relative;
@@ -77,9 +77,6 @@ body {
 .description h1{
     margin: 16px 0;
     font-size: 40px;
-}
-.description .title{
-    color: var(--main-color)
 }
 .description p{
     font-size: 22px;
@@ -145,7 +142,7 @@ body {
     .description{
         order: 2;
         padding: 0 10px;
-        margin-top: -20px;
+        margin-top: -30px;
     }
     .description h1{
         font-size: 32px

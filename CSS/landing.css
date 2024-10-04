@@ -3,16 +3,24 @@
     --main-color: rgb(255 174 78)
 }
 body {
-    margin: 0 10px;
+    margin: 0;
     overflow-x: hidden;
     font-family: Arial, Helvetica, sans-serif;
+    padding: 0 0 0 10px
 }
-.half-circle{
+.main-half-circle{
     width: 100%;
-    height: 200vh;
+    height: 81px;
+    position: relative;
+    z-index: -11;
+    overflow-x: clip;
+}
+.half-circle {
+    width: 135%;
+    height: 765px;
     position: absolute;
-    top: -125%;
-    right: -30%;
+    top: -476%;
+    right: -59%;
     border-radius: 50%;
     background-color: var(--main-color);
     z-index: -2;
@@ -21,12 +29,16 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr;
     width: 100%;
+    margin-top: -85px;
 }
 .circle-container{
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 364px;
+    height: 380px;
+    width: 100%;
+    overflow: hidden;
 }
 .circle-container .father {
     position: absolute;
@@ -63,6 +75,7 @@ body {
     transform-origin: center;
 }
 .description h1{
+    margin: 16px 0;
     font-size: 40px;
 }
 .description .title{
@@ -81,6 +94,7 @@ body {
     border-radius: 31px;
     font-weight: bold;
     cursor: pointer;
+    margin-bottom: 12px;
 }
 .border {
     width: 310px;
@@ -97,11 +111,12 @@ body {
         grid-template-columns: 1fr;
     }
     .circle-container{
-        margin-left: calc(100% + 10px);
         order: 1;
     }
     .circle {
         animation: 11s rotate2 infinite linear;
+        position: absolute;
+        right: 0;
     }
     .circle-container .father:nth-child(1) {
         animation: animation1 11s infinite linear
@@ -140,9 +155,14 @@ body {
     .grid{
         grid-template-columns: 1fr;
     }
+    .half-circle {
+        width: 1556px;
+        height: 1486px;
+        top: -1000px;
+        right: -1000px;
+    }
     .circle-container{
         order: 1;
-        height: 345px
     }
     .description{
         order: 2;
@@ -153,18 +173,18 @@ body {
     .grid{
         grid-template-columns: 1fr 1fr;
     }
+    .half-circle {
+        width: 1733px;
+        height: 1561px;
+        top: -1000px;
+        right: -1000px;
+    }
     .circle-container{
         order: 2
     }
     .description{
         order: 1;
         text-align: start;
-    }
-}
-@media (max-width: 1200px) {
-    .half-circle{
-        width: 151%;
-        right: -85%;
     }
 }
 @keyframes rotate {

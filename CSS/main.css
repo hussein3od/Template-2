@@ -6,8 +6,8 @@ body{
     background-color: var(--main-color);
 }
 .logo{
-    position: absolute;
-    width: 225px;
+    position: fixed;
+    width: 200px;
     height: 50px;
 }
 .icon{
@@ -175,6 +175,9 @@ form i{
     }
     .logo{
         display: none;
+    }
+    .loading{
+        left: calc(50% - 25px);
     }
 }
 @media (min-width: 768px) {
